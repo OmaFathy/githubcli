@@ -7,7 +7,9 @@ public class User {
     public User(String userName) {
         this.userName = userName;
     }
-
+   public void newmethod(){
+        System.out.println("s");
+   }
 
     public String getUserName() {
         return userName;
