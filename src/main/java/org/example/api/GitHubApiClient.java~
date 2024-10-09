@@ -1,0 +1,53 @@
+package org.example.api;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class GitHubApiClient {
+
+    // Base GitHub API URL
+    private static final String githubApiUrl = "https://api.github.com/users/";
+
+    // Method to fetch user actions/events
+    public String getUserActivity(String userName) {
+        StringBuilder responseContent = new StringBuilder(); // For storing the response
+        String endPoint = githubApiUrl + userName + "/events"; // Constructing the API URL
+
+        try {
+            URL url = new URL(endPoint);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            // Set request method to GET
+            connection.setRequestMethod("GET");
+
+            // Set timeout values (optional)
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+
+            // Checking for a successful response
+            int status = connection.getResponseCode();
+            if (status == 200) { // HTTP OK
+                // Reading the response stream
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+
+                while ((inputLine = in.readLine()) != null) {
+                    responseContent.append(inputLine);
+                }
+                in.close();
+            } else {
+                System.out.println("Error: Received response code " + status);
+            }
+
+            // Closing the connection
+            connection.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error fetching user activity.";
+        }
+
+        return responseContent.toString(); // Returning the response as a string
+    }
+}
