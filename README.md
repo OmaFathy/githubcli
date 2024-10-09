@@ -1,4 +1,3 @@
-```markdown
 # 🚀 GitHub CLI Activity Fetcher
 
 ![Java](https://img.shields.io/badge/Java-11+-brightgreen) ![Maven](https://img.shields.io/badge/Maven-Build-blue) ![API](https://img.shields.io/badge/API-GitHub-blue) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -81,5 +80,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 💡 *Inspired by real-world API usage, this project demonstrates how to build a practical CLI tool while applying key programming concepts.*
-
-```
