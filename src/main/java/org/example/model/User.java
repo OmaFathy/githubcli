@@ -3,6 +3,7 @@ package org.example.model;
 public class User {
 
     private String userName;
+    private String displayName;
     public User(String userName) {
         this.userName = userName;
     }
